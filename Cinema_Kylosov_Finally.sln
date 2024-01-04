@@ -5,6 +5,8 @@ VisualStudioVersion = 17.7.34031.279
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cinema_Kylosov_Finally", "Cinema_Kylosov_Finally.csproj", "{F22A518A-7F97-40EA-89A6-F4EC6193A960}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WorkingBD", "WorkingBD\WorkingBD.csproj", "{6FE15693-8D03-4613-977F-734818064510}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{F22A518A-7F97-40EA-89A6-F4EC6193A960}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F22A518A-7F97-40EA-89A6-F4EC6193A960}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F22A518A-7F97-40EA-89A6-F4EC6193A960}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6FE15693-8D03-4613-977F-734818064510}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6FE15693-8D03-4613-977F-734818064510}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6FE15693-8D03-4613-977F-734818064510}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6FE15693-8D03-4613-977F-734818064510}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
