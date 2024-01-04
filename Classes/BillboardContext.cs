@@ -12,8 +12,8 @@ namespace Cinema_Kylosov_Finally.Classes
 {
     public class BillboardContext : Billboard
     {
-        public BillboardContext(int id, int cinemaId, string movie, DateTime showTime, decimal ticketPrice, int numberOfTickets)
-            : base(id, cinemaId, movie, showTime, ticketPrice, numberOfTickets)
+        public BillboardContext(int id, int cinemaId, int movieID, DateTime showTime, decimal ticketPrice, int numberOfTickets)
+            : base(id, cinemaId, movieID, showTime, ticketPrice, numberOfTickets)
         {
         }
 
@@ -30,7 +30,7 @@ namespace Cinema_Kylosov_Finally.Classes
                 allBillboards.Add(new BillboardContext(
                     billboardQuery.GetInt32(0),
                     billboardQuery.GetInt32(1),
-                    billboardQuery.GetString(2),
+                    billboardQuery.GetInt32(2),
                     billboardQuery.GetDateTime(3),
                     billboardQuery.GetDecimal(4),
                     billboardQuery.GetInt32(5)

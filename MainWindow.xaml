@@ -18,5 +18,14 @@
             <Button Content="Фильмы"        Height="30" Width="100" Margin="0,0,5,0" HorizontalAlignment="Center" />
         </StackPanel>
 
+
+        <ScrollViewer x:Name="scroll_main" VerticalScrollBarVisibility="Auto" Margin="0,10,0,0" Grid.Row="1">
+            <Grid Width="{Binding ElementName=scroll_main, Path=ActualWidth}">
+                <WrapPanel x:Name="parent" Orientation="Horizontal" HorizontalAlignment="Center">
+
+                </WrapPanel>
+            </Grid>
+        </ScrollViewer>
+
     </Grid>
 </Window>

@@ -10,7 +10,7 @@ namespace WorkingBD
 {
     public class Connection
     {
-        static readonly string PathConnection = "server=localhost;database=Airlines;uid=root;pwd=";
+        static readonly string PathConnection = "server=localhost;database=Cinema;uid=root;pwd=";
         public static MySqlConnection OpenConnection()
         {
             MySqlConnection connection = new MySqlConnection(PathConnection);

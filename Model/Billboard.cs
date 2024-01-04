@@ -10,17 +10,17 @@ namespace Cinema_Kylosov_Finally.Model
     {
         public int BillboardID { get; set; }
         public int CinemaID { get; set; }
-        public string Movie { get; set; }
+        public int MovieID { get; set; }
         public DateTime ShowTime { get; set; }
         public decimal TicketPrice { get; set; }
         public int NumberOfTickets { get; set; }
 
         public Billboard() { }
-        public Billboard(int billboardID, int cinemaID, string movie, DateTime showTime, decimal ticketPrice, int numberOfTickets)
+        public Billboard(int billboardID, int cinemaID, int movieID, DateTime showTime, decimal ticketPrice, int numberOfTickets)
         {
             BillboardID = billboardID;
             CinemaID = cinemaID;
-            Movie = movie;
+            MovieID = movieID;
             ShowTime = showTime;
             TicketPrice = ticketPrice;
             NumberOfTickets = numberOfTickets;
