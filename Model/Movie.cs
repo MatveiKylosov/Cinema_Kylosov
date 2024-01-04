@@ -10,12 +10,16 @@ namespace Cinema_Kylosov_Finally.Model
     {
         public int MovieID { get; set; }
         public string MovieName { get; set; }
+        public string Genre  { get; set; }
+        public int Duration { get; set; }
 
         public Movie() { }
-        public Movie(int movieID, string movieName)
+        public Movie(int movieID, string movieName, string genre, int duration)
         {
             MovieID = movieID;
             MovieName = movieName;
+            Genre = genre;
+            Duration = duration;
         }
     }
 }

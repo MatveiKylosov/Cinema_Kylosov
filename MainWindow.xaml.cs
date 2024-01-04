@@ -29,5 +29,29 @@ namespace Cinema_Kylosov_Finally
         {
             InitializeComponent();
         }
+
+        private void Cinema_Click(object sender, RoutedEventArgs e)
+        {
+            parent.Children.Clear();
+
+            foreach(var x in cinema)
+                parent.Children.Add(new Element.Cinema(x));
+        }
+
+        private void Billboard_Click(object sender, RoutedEventArgs e)
+        {
+            parent.Children.Clear();
+
+            foreach (var x in billboard)
+                parent.Children.Add(new Element.Billboard(x, movies.Find(f => x.MovieID == f.MovieID).MovieName));
+        }
+
+        private void Movie_Click(object sender, RoutedEventArgs e)
+        {
+            parent.Children.Clear();
+
+            foreach (var x in movies)
+                parent.Children.Add(new Element.Movie(x));
+        }
     }
 }

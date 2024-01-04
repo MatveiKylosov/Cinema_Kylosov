@@ -107,6 +107,18 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="Element\Billboard.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Element\Cinema.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Element\Movie.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -118,6 +130,15 @@
     <Compile Include="Classes\BillboardContext.cs" />
     <Compile Include="Classes\CinemaContext.cs" />
     <Compile Include="Classes\MovieContext.cs" />
+    <Compile Include="Element\Billboard.xaml.cs">
+      <DependentUpon>Billboard.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Element\Cinema.xaml.cs">
+      <DependentUpon>Cinema.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Element\Movie.xaml.cs">
+      <DependentUpon>Movie.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -153,9 +174,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Element\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="WorkingBD\WorkingBD.csproj">
       <Project>{6fe15693-8d03-4613-977f-734818064510}</Project>

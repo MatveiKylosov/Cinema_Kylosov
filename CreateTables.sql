@@ -60,3 +60,8 @@ VALUES
 ('Movie8'),
 ('Movie9'),
 ('Movie10');
+
+ALTER TABLE Movies
+ADD COLUMN Genre VARCHAR(255),
+ADD COLUMN Duration INT;
+
