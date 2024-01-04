@@ -13,8 +13,8 @@ namespace Cinema_Kylosov_Finally.Model
         public int NumberOfHalls { get; set; }
         public int NumberOfSeats { get; set; }
 
-        Cinema() { }
-        Cinema(int cinemaID, string cinemaName, int numberOfHalls, int numberOfSeats)
+        public Cinema() { }
+        public Cinema(int cinemaID, string cinemaName, int numberOfHalls, int numberOfSeats)
         {
             CinemaID = cinemaID;
             CinemaName = cinemaName;
