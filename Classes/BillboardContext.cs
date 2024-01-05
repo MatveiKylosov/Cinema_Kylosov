@@ -7,10 +7,12 @@ using System.Text;
 using System.Threading.Tasks;
 using MySql.Data.MySqlClient;
 using WorkingBD;
+using System.Globalization;
+using Cinema_Kylosov_Finally.Element;
 
 namespace Cinema_Kylosov_Finally.Classes
 {
-    public class BillboardContext : Billboard
+    public class BillboardContext : Model.Billboard
     {
         public BillboardContext(int id, int cinemaId, int movieID, DateTime showTime, decimal ticketPrice, int numberOfTickets)
             : base(id, cinemaId, movieID, showTime, ticketPrice, numberOfTickets)
@@ -44,13 +46,37 @@ namespace Cinema_Kylosov_Finally.Classes
 
         public void DeleteBillboard()
         {
-         
+            MySqlConnection connection = Connection.OpenConnection();
+            Connection.Query($"DELETE FROM `Cinema`.`Billboard` WHERE BillboardID = {this.BillboardID}", connection);
+            Connection.CloseConnection(connection);
         }
 
         //udpate insert
-        public void UIBillboard(bool Update = false)
+        public void UpdateBillboard(string cinemaName, string movieName, DateTime showTime, decimal ticketPrice, int numberOfTickets)
         {
+            MySqlConnection connection = Connection.OpenConnection();
+            Connection.Query($"UPDATE `Cinema`.`Billboard` SET "+
+                            $"CinemaID           = (SELECT CinemaID FROM Cinema.Cinemas WHERE CinemaName = '{cinemaName}'), " +
+                            $"MovieID            = (SELECT MovieID  FROM Cinema.Movies  WHERE MovieName  = '{movieName}'), " +
+                            $"ShowTime           = '{showTime.ToString("yyyy-MM-dd HH:mm:ss")}', " +
+                            $"TicketPrice        = {ticketPrice.ToString(CultureInfo.InvariantCulture)}, " +
+                            $"NumberOfTickets    = {numberOfTickets} " +
+                            $"WHERE (BillboardID = {this.BillboardID});", connection);
+            Connection.CloseConnection(connection);
+        }
 
+        public static void Insert(int id, string cinemaName, string movieName, DateTime showTime, decimal ticketPrice, int numberOfTickets)
+        {
+            MySqlConnection connection = Connection.OpenConnection();
+            Connection.Query($"INSERT INTO `Cinema`.`Billboard` VALUES(" +
+                $"{id}, " +
+                $"(SELECT CinemaID FROM Cinema.Cinemas WHERE CinemaName = '{cinemaName}'), " +
+                $"(SELECT MovieID  FROM Cinema.Movies  WHERE MovieName  = '{movieName}'), " +
+                $"'{showTime.ToString("yyyy-MM-dd HH:mm:ss")}'," +
+                $"{ticketPrice.ToString(CultureInfo.InvariantCulture)}," +
+                $"{numberOfTickets})", 
+                connection);
+            Connection.CloseConnection(connection);
         }
     }
 }

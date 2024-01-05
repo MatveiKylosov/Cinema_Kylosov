@@ -7,19 +7,38 @@
              mc:Ignorable="d" 
              HorizontalAlignment="Center" VerticalAlignment="Center">
     <Grid Background="White" Margin="10,10,10,10" >
-        <TextBlock Text="Афиша:" FontWeight="Bold" FontSize="16"  Margin="15,15,10,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
-        <TextBlock x:Name="ID" FontSize="16"  Text="1" Margin="180,15,20,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
 
-        <TextBlock Text="Фильм:" FontWeight="Bold" FontSize="16"  Margin="15,50,10,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
-        <TextBlock x:Name="Movie" FontSize="16"  Text="1" Margin="180,50,20,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+        <TextBlock Text="Кинотеатр:" FontWeight="Bold" FontSize="16"  Margin="15,15,10,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+        <TextBlock x:Name="CinemaName" FontSize="16"  Text="1" Margin="180,15,20,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
 
-        <TextBlock Text="Время:" FontWeight="Bold" FontSize="16"  Margin="15,90,10,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
-        <TextBlock x:Name="Time" FontSize="16"  Text="1" Margin="180,90,20,20" VerticalAlignment="Top" HorizontalAlignment="Left"/>
 
-        <TextBlock Text="Билеты:" FontWeight="Bold" FontSize="16"  Margin="15,130,10,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
-        <TextBlock x:Name="Tickets" FontSize="16"  Text="1" Margin="180,130,20,20" VerticalAlignment="Top" HorizontalAlignment="Left"/>
 
-        <Button Content="Изменить" Margin="0,160,140,20" Height="20" VerticalAlignment="Top" HorizontalAlignment="Center" Width="125"  Click="Edit_Click"/>
-        <Button Content="Удалить" Margin="150,160,15,20" Height="20" VerticalAlignment="Top" HorizontalAlignment="Center" Width="125" Click="Delete_Click"/>
+        <TextBlock Text="Афиша:" FontWeight="Bold" FontSize="16"  Margin="15,50,10,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+        <TextBlock x:Name="BillboardID" FontSize="16"  Text="1" Margin="180,50,20,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+
+        <TextBlock Text="Фильм:" FontWeight="Bold" FontSize="16"  Margin="15,85,10,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+        <TextBlock x:Name="MovieName" FontSize="16"  Text="1" Margin="180,85,20,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+
+        <TextBlock Text="Время:" FontWeight="Bold" FontSize="16"  Margin="15,120,10,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+        <TextBlock x:Name="Time" FontSize="16"  Text="1" Margin="180,120,20,20" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+
+        <TextBlock Text="Билеты:" FontWeight="Bold" FontSize="16"  Margin="15,155,10,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+        <TextBlock x:Name="Tickets" FontSize="16"  Text="1" Margin="180,155,20,20" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+
+        <TextBlock Text="Цена на билет:" FontWeight="Bold" FontSize="16"  Margin="15,190,10,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+        <TextBlock x:Name="TicketPrice" FontSize="16"  Text="1" Margin="180,190,20,20" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+
+        <ComboBox x:Name="CBCinemaName" FontSize="16"   Margin="180,15,20,0"    VerticalAlignment="Top" HorizontalAlignment="Left" Visibility="Hidden"/>
+        <ComboBox x:Name="CBMovieName"  FontSize="16"   Margin="180,85,20,0"    VerticalAlignment="Top" HorizontalAlignment="Left" Visibility="Hidden"/>
+        <TextBox x:Name="TBTime"        FontSize="16"   Margin="180,120,20,20"  VerticalAlignment="Top" HorizontalAlignment="Left" Visibility="Hidden"/>
+        <TextBox x:Name="TBTickets"     FontSize="16"   Margin="180,155,20,20"  VerticalAlignment="Top" HorizontalAlignment="Left" Visibility="Hidden" PreviewTextInput="DigitCheck"/>
+        <TextBox x:Name="TBTicketPrice" FontSize="16"   Margin="180,190,20,20"  VerticalAlignment="Top" HorizontalAlignment="Left" Visibility="Hidden" PreviewTextInput="DecimalCheck"/>
+    
+        <Button x:Name="EditAddBTN" Content="Изменить" Margin="0,225,140,20"    Height="20" VerticalAlignment="Top" HorizontalAlignment="Center" Width="125"    Click="EditBillboard_Click"/>
+        <Button x:Name="DeleteCancelBTN" Content="Удалить"  Margin="150,225,15,20"   Height="20" VerticalAlignment="Top" HorizontalAlignment="Center" Width="125"    Click="DeleteBillboard_Click"/>
+
+        <Grid Background="White" x:Name="AddGrid" MouseLeftButtonDown="Add_Click" Visibility="Hidden">
+            <TextBlock Text="Добавить" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+        </Grid>
     </Grid>
 </UserControl>

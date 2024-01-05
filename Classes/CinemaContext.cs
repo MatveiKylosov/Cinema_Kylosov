@@ -42,14 +42,28 @@ namespace Cinema_Kylosov_Finally.Classes
 
         public void DeleteCinema()
         {
-
+            MySqlConnection connection = Connection.OpenConnection();
+            Connection.Query($"DELETE FROM `Cinema`.`Cinemas` WHERE CinemaID = {this.CinemaID};\nDELETE FROM `Cinema`.`Billboard` WHERE CinemaID = {this.CinemaID};", connection);
+            Connection.CloseConnection(connection);
         }
 
-
         //udpate insert
-        public void UIMovie(bool Update = false)
+        public void Update(string CinemaName, int NumberOfHalls, int NumberOfSeats)
         {
+            this.CinemaName = CinemaName;
+            this.NumberOfHalls = NumberOfHalls;
+            this.NumberOfSeats = NumberOfSeats;
 
+            MySqlConnection connection = Connection.OpenConnection();
+            Connection.Query($"UPDATE `Cinema`.`Cinemas` SET CinemaName = '{this.CinemaName}', NumberOfHalls = {this.NumberOfHalls}, NumberOfSeats = {this.NumberOfSeats} WHERE CinemaID = {this.CinemaID}", connection);
+            Connection.CloseConnection(connection);
+        }
+
+        public static void Insert(int cinemaID, string cinemaName, int numberOfHalls, int numberOfSeats)
+        {
+            MySqlConnection connection = Connection.OpenConnection();
+            Connection.Query($"INSERT INTO `Cinema`.`Cinemas` VALUES({cinemaID}, '{cinemaName}', {numberOfHalls}, {numberOfSeats})", connection);
+            Connection.CloseConnection(connection);
         }
     }
 

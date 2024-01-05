@@ -21,35 +21,49 @@ namespace Cinema_Kylosov_Finally
     /// </summary>
     public partial class MainWindow : Window
     {
-        List<Classes.CinemaContext> cinema = Classes.CinemaContext.AllCinemas();
-        List<Classes.BillboardContext> billboard = Classes.BillboardContext.AllBillboards();
-        List<Classes.MovieContext> movies = Classes.MovieContext.AllMovies();
+        public List<Classes.CinemaContext> cinema = Classes.CinemaContext.AllCinemas();
+        public List<Classes.BillboardContext> billboard = Classes.BillboardContext.AllBillboards();
+        public List<Classes.MovieContext> movies = Classes.MovieContext.AllMovies();
+
+        public static MainWindow main;
 
         public MainWindow()
         {
             InitializeComponent();
+            main = this;
         }
 
-        private void Cinema_Click(object sender, RoutedEventArgs e)
+        public void UpdateInfo()
+        {
+            cinema = Classes.CinemaContext.AllCinemas();
+            billboard = Classes.BillboardContext.AllBillboards();
+            movies = Classes.MovieContext.AllMovies();
+        }
+
+        public void Cinema_Click(object sender, RoutedEventArgs e)
         {
             parent.Children.Clear();
+            UpdateInfo();
 
-            foreach(var x in cinema)
+            parent.Children.Add(new Element.Cinema(null));
+            foreach (var x in cinema)
                 parent.Children.Add(new Element.Cinema(x));
         }
 
-        private void Billboard_Click(object sender, RoutedEventArgs e)
+        public void Billboard_Click(object sender, RoutedEventArgs e)
         {
             parent.Children.Clear();
+            UpdateInfo();
 
+            parent.Children.Add(new Element.Billboard(null));
             foreach (var x in billboard)
-                parent.Children.Add(new Element.Billboard(x, movies.Find(f => x.MovieID == f.MovieID).MovieName));
+                parent.Children.Add(new Element.Billboard(x));
         }
 
-        private void Movie_Click(object sender, RoutedEventArgs e)
+        public void Movie_Click(object sender, RoutedEventArgs e)
         {
             parent.Children.Clear();
-
+            UpdateInfo();
             foreach (var x in movies)
                 parent.Children.Add(new Element.Movie(x));
         }
