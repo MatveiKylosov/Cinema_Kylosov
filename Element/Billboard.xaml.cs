@@ -1,5 +1,7 @@
 ﻿using Cinema_Kylosov_Finally.Model;
+using Microsoft.Win32;
 using System;
+using System.IO;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
@@ -15,13 +17,15 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Xml.Linq;
+using System.Windows.Forms;
+
 
 namespace Cinema_Kylosov_Finally.Element
 {
     /// <summary>
     /// Логика взаимодействия для Billboard.xaml
     /// </summary>
-    public partial class Billboard : UserControl
+    public partial class Billboard : System.Windows.Controls.UserControl
     {
         Classes.BillboardContext billboard;
         bool change = false;
@@ -63,6 +67,7 @@ namespace Cinema_Kylosov_Finally.Element
 
                 EditAddBTN.Content = "Добавить";
                 DeleteCancelBTN.Content = "Отменить";
+                IssueBTN.Visibility = Visibility.Hidden;
             }
 
             foreach(var x in MainWindow.main.cinema)
@@ -97,7 +102,7 @@ namespace Cinema_Kylosov_Finally.Element
                 if (!NoChanges && TimeParse)
                 {
                     if(!TimeParse)
-                        MessageBox.Show($"Время указано не правильно!", $"Внимание!", MessageBoxButton.OK, MessageBoxImage.Error);
+                        System.Windows.MessageBox.Show($"Время указано не правильно!", $"Внимание!", MessageBoxButton.OK, MessageBoxImage.Error);
 
                     Time.Text = TBTime.Text;
                     Tickets.Text = TBTickets.Text;
@@ -197,7 +202,7 @@ namespace Cinema_Kylosov_Finally.Element
 
             }
             else
-                MessageBox.Show($"Заполните все данные правильно!", $"Внимание!", MessageBoxButton.OK, MessageBoxImage.Error);
+                System.Windows.MessageBox.Show($"Заполните все данные правильно!", $"Внимание!", MessageBoxButton.OK, MessageBoxImage.Error);
         }
 
         private void CancelBillboard_Click(object sender, RoutedEventArgs e)
@@ -224,6 +229,40 @@ namespace Cinema_Kylosov_Finally.Element
         {
             if (!Char.IsDigit(e.Text, 0))
                 e.Handled = true;
+        }
+
+        private void Issue_Click(object sender, RoutedEventArgs e)
+        {
+            System.Windows.Forms.SaveFileDialog saveFileDialog = new System.Windows.Forms.SaveFileDialog();
+
+
+            saveFileDialog.Filter = "Ticket (*.ticket)|*.ticket";
+            saveFileDialog.Title = "Сохранить файл";
+            saveFileDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+
+
+            DialogResult result = saveFileDialog.ShowDialog();
+
+            if (result == DialogResult.OK)
+            {
+                using (StreamWriter writer = new StreamWriter(saveFileDialog.FileName))
+                {
+                    writer.WriteLine("--------------------------------------------------");
+                    writer.WriteLine("                      БИЛЕТ                      ");
+                    writer.WriteLine("--------------------------------------------------");
+                    writer.WriteLine($"ID Билета: {billboard.BillboardID}");
+                    writer.WriteLine($"ID Кинотеатра: {billboard.CinemaID}");
+                    writer.WriteLine($"ID Фильма: {billboard.MovieID}");
+                    writer.WriteLine($"Время показа: {billboard.ShowTime.ToString("dd.MM.yyyy HH:mm")}");
+                    writer.WriteLine($"Цена билета: {billboard.TicketPrice}");
+                    writer.WriteLine("--------------------------------------------------");
+                    writer.WriteLine("               Спасибо за покупку!               ");
+                    writer.WriteLine("--------------------------------------------------");
+                }
+
+                billboard.Issue();
+                this.Tickets.Text = $"{int.Parse(this.Tickets.Text) + 1}";
+            }
         }
     }
 }

@@ -78,5 +78,12 @@ namespace Cinema_Kylosov_Finally.Classes
                 connection);
             Connection.CloseConnection(connection);
         }
+
+        public void Issue()
+        {
+            MySqlConnection connection = Connection.OpenConnection();
+            Connection.Query($"UPDATE `Cinema`.`Billboard` SET NumberOfTickets = NumberOfTickets + 1 WHERE (BillboardID = {this.BillboardID});", connection);
+            Connection.CloseConnection(connection);
+        }
     }
 }

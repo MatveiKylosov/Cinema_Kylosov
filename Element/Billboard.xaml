@@ -37,6 +37,7 @@
         <Button x:Name="EditAddBTN" Content="Изменить" Margin="0,225,140,20"    Height="20" VerticalAlignment="Top" HorizontalAlignment="Center" Width="125"    Click="EditBillboard_Click"/>
         <Button x:Name="DeleteCancelBTN" Content="Удалить"  Margin="150,225,15,20"   Height="20" VerticalAlignment="Top" HorizontalAlignment="Center" Width="125"    Click="DeleteBillboard_Click"/>
 
+        <Button x:Name="IssueBTN" Content="Оформить билет"  Margin="0,260,0,20"   Height="20" VerticalAlignment="Top" HorizontalAlignment="Center" Width="125"    Click="Issue_Click"/>
         <Grid Background="White" x:Name="AddGrid" MouseLeftButtonDown="Add_Click" Visibility="Hidden">
             <TextBlock Text="Добавить" VerticalAlignment="Center" HorizontalAlignment="Center"/>
         </Grid>
