@@ -59,7 +59,7 @@ namespace Cinema_Kylosov_Finally.Classes
             //добавить удаление афиш
             MySqlConnection connection = Connection.OpenConnection();
             Connection.Query($"DELETE FROM `Cinema`.`Movies` WHERE MovieID = {this.MovieID};\nDELETE FROM `Cinema`.`Billboard` WHERE MovieID = {this.MovieID};" +
-                $"DELETE FROM `Cinema`.`Billbord` where MovieID = {this.MovieID}", connection);
+                $"DELETE FROM `Cinema`.`Billboard` where MovieID = {this.MovieID}", connection);
             Connection.CloseConnection(connection);
         }
 

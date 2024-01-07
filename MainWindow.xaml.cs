@@ -69,5 +69,10 @@ namespace Cinema_Kylosov_Finally
             foreach (var x in movies)
                 parent.Children.Add(new Element.Movie(x));
         }
+
+        private void Filter_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

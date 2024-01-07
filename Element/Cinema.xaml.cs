@@ -70,9 +70,6 @@ namespace Cinema_Kylosov_Finally.Element
                     if (cinemaExists)
                         MessageBox.Show($"Такой кинотеатр существует!", $"Внимание!", MessageBoxButton.OK, MessageBoxImage.Error);
 
-                    TBName.Visibility = Visibility.Hidden;
-                    TBNumber_of_Halls.Visibility = Visibility.Hidden;
-                    TBNumber_of_Seats.Visibility = Visibility.Hidden;
                     change = false;
                 }
                 else
@@ -81,14 +78,21 @@ namespace Cinema_Kylosov_Finally.Element
                     Number_of_Halls.Text = TBNumber_of_Halls.Text;
                     Number_of_Seats.Text = TBNumber_of_Seats.Text;
 
-                    TBName.Visibility = Visibility.Hidden;
-                    TBNumber_of_Halls.Visibility = Visibility.Hidden;
-                    TBNumber_of_Seats.Visibility = Visibility.Hidden;
-
                     cinema.Update(Name.Text, int.Parse(Number_of_Halls.Text), int.Parse(Number_of_Seats.Text));
 
                     change = false;
                 }
+
+
+                TBName.Visibility = Visibility.Hidden;
+                TBNumber_of_Halls.Visibility = Visibility.Hidden;
+                TBNumber_of_Seats.Visibility = Visibility.Hidden;
+
+                Name.Visibility = Visibility.Visible;
+                Number_of_Halls.Visibility = Visibility.Visible;
+                Number_of_Seats.Visibility = Visibility.Visible;
+
+                DeleteCancelBTN.Content = "Удалить";
 
             }
             else
@@ -100,6 +104,10 @@ namespace Cinema_Kylosov_Finally.Element
                 TBName.Visibility = Visibility.Visible;
                 TBNumber_of_Halls.Visibility = Visibility.Visible;
                 TBNumber_of_Seats.Visibility = Visibility.Visible;
+
+                Name.Visibility = Visibility.Hidden;
+                Number_of_Halls.Visibility = Visibility.Hidden;
+                Number_of_Seats.Visibility = Visibility.Hidden;
 
                 DeleteCancelBTN.Content = "Отменить";
 

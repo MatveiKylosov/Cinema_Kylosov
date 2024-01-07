@@ -12,10 +12,11 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <StackPanel Orientation="Horizontal" Margin="0,10,0,0" HorizontalAlignment="Center" Width="320">
+        <StackPanel Orientation="Horizontal" Margin="0,10,0,0" HorizontalAlignment="Center">
             <Button Content="Кинотеатры"    Height="30" Width="100" Margin="5,0,5,0" HorizontalAlignment="Center" Click="Cinema_Click"/>
             <Button Content="Афиши"         Height="30" Width="100" Margin="0,0,5,0" HorizontalAlignment="Center" Click="Billboard_Click"/>
             <Button Content="Фильмы"        Height="30" Width="100" Margin="0,0,5,0" HorizontalAlignment="Center" Click="Movie_Click" />
+            <Button Content="Фильтр"        Height="30" Width="100" Margin="0,0,5,0" HorizontalAlignment="Center" Click="Filter_Click" />
         </StackPanel>
 
 

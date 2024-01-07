@@ -185,8 +185,8 @@ namespace Cinema_Kylosov_Finally.Element
                DateTime.TryParse(TBTime.Text, out DateTime time) &
                TBTickets.Text != "" & TBTicketPrice.Text != "")
             {
-
-                Classes.BillboardContext.Insert(MainWindow.main.billboard[MainWindow.main.billboard.Count - 1].BillboardID + 1, 
+                int index = MainWindow.main.billboard.Count == 0 ? 0 : MainWindow.main.billboard[MainWindow.main.billboard.Count - 1].BillboardID + 1;
+                Classes.BillboardContext.Insert(index, 
                                                 CBCinemaName.Text,
                                                 CBMovieName.Text,
                                                 time,

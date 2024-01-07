@@ -140,7 +140,8 @@ namespace Cinema_Kylosov_Finally.Element
             if (TBName.Text != "" && TBGenre.Text != "" && TBDuration.Text != "")
                 if (MainWindow.main.cinema.Find(x => x.CinemaName == TBName.Text) == null)
                 {
-                    Classes.MovieContext.Insert(MainWindow.main.movies[MainWindow.main.movies.Count - 1].MovieID + 1, TBName.Text, TBGenre.Text, int.Parse(TBDuration.Text));
+                    int index = MainWindow.main.movies.Count == 0 ? 0 : MainWindow.main.movies[MainWindow.main.movies.Count - 1].MovieID + 1;
+                    Classes.MovieContext.Insert(index, TBName.Text, TBGenre.Text, int.Parse(TBDuration.Text));
                     MainWindow.main.Movie_Click(null, null);
                 }
                 else MessageBox.Show($"Такой фильм существует!", $"Внимание!", MessageBoxButton.OK, MessageBoxImage.Error);
