@@ -101,23 +101,37 @@ namespace Cinema_Kylosov_Finally.Element
                 TBNumber_of_Halls.Visibility = Visibility.Visible;
                 TBNumber_of_Seats.Visibility = Visibility.Visible;
 
+                DeleteCancelBTN.Content = "Отменить";
+
                 change = true;
             }
         }
 
         private void DeleteCinema_Click(object sender, RoutedEventArgs e)
         {
-            List<Classes.BillboardContext> billboardContexts = MainWindow.main.billboard.FindAll(x => x.CinemaID == cinema.CinemaID);
+            if (change)
+            {
+                TBName.Visibility = Visibility.Hidden;
+                TBNumber_of_Halls.Visibility = Visibility.Hidden;
+                TBNumber_of_Seats.Visibility = Visibility.Hidden;
 
-            if (billboardContexts.Count > 0)
-                if (MessageBox.Show($"У этого кинотеатра есть {billboardContexts.Count} афиши.\nАфиши тоже удаляться.\nПродолжить удаление?", $"Удаление кинотеатра {cinema.CinemaName}", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.No)
-                    return;
+                change = false;
+                DeleteCancelBTN.Content = "Удалить";
+            }
+            else
+            {
+                List<Classes.BillboardContext> billboardContexts = MainWindow.main.billboard.FindAll(x => x.CinemaID == cinema.CinemaID);
 
-            this.Visibility = Visibility.Visible;
-            this.Height = 0;
-            this.Width = 0;
+                if (billboardContexts.Count > 0)
+                    if (MessageBox.Show($"У этого кинотеатра есть {billboardContexts.Count} афиши.\nАфиши тоже удаляться.\nПродолжить удаление?", $"Удаление кинотеатра {cinema.CinemaName}", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.No)
+                        return;
 
-            cinema.Delete();
+                this.Visibility = Visibility.Visible;
+                this.Height = 0;
+                this.Width = 0;
+
+                cinema.Delete();
+            }
         }
 
         private void AddCinema_Click(object sender, RoutedEventArgs e)

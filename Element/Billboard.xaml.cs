@@ -92,6 +92,8 @@ namespace Cinema_Kylosov_Finally.Element
                 TBTickets.Visibility = Visibility.Hidden;
                 TBTicketPrice.Visibility = Visibility.Hidden;
 
+                DeleteCancelBTN.Content = "Удалить";
+
                 if (!NoChanges && TimeParse)
                 {
                     if(!TimeParse)
@@ -140,17 +142,39 @@ namespace Cinema_Kylosov_Finally.Element
                 TBTickets.Visibility = Visibility.Visible;
                 TBTicketPrice.Visibility = Visibility.Visible;
 
+                DeleteCancelBTN.Content = "Отменить";
+                
                 change = true;
             }
         }
 
         private void DeleteBillboard_Click(object sender, RoutedEventArgs e)
         {
-            this.Visibility = Visibility.Visible;
-            this.Height = 0;
-            this.Width = 0;
+            if (change)
+            {
+                CinemaName.Visibility = Visibility.Visible;
+                MovieName.Visibility = Visibility.Visible;
+                Time.Visibility = Visibility.Visible;
+                Tickets.Visibility = Visibility.Visible;
+                TicketPrice.Visibility = Visibility.Visible;
 
-            billboard.DeleteBillboard();
+                CBCinemaName.Visibility = Visibility.Hidden;
+                CBMovieName.Visibility = Visibility.Hidden;
+                TBTime.Visibility = Visibility.Hidden;
+                TBTickets.Visibility = Visibility.Hidden;
+                TBTicketPrice.Visibility = Visibility.Hidden;
+
+                change = false;
+                DeleteCancelBTN.Content = "Удалить";
+            }
+            else
+            {
+                this.Visibility = Visibility.Hidden;
+                this.Height = 0;
+                this.Width = 0;
+
+                billboard.DeleteBillboard();
+            }
         }
 
         private void AddBillboard_Click(object sender, RoutedEventArgs e)

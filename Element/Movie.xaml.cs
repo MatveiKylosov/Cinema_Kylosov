@@ -98,23 +98,41 @@ namespace Cinema_Kylosov_Finally.Element
                 Duration.Visibility = Visibility.Hidden;
                 Genre.Visibility = Visibility.Hidden;
 
+                DeleteCancelBTN.Content = "Отменить";
+
                 change = true;
             }
         }
 
         private void DeleteMovie_Click(object sender, RoutedEventArgs e)
         {
-            List<Classes.BillboardContext> billboardContexts = MainWindow.main.billboard.FindAll(x => x.MovieID == movie.MovieID);
+            if (change)
+            {
+                TBName.Visibility = Visibility.Hidden;
+                TBDuration.Visibility = Visibility.Hidden;
+                TBGenre.Visibility = Visibility.Hidden;
 
-            if (billboardContexts.Count > 0)
-                if (MessageBox.Show($"У этого фильма есть {billboardContexts.Count} афиши.\nАфиши тоже удаляться.\nПродолжить удаление?", $"Удаление фильма {movie.MovieName}", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.No)
-                    return;
+                Name.Visibility = Visibility.Visible;
+                Duration.Visibility = Visibility.Visible;
+                Genre.Visibility = Visibility.Visible;
 
-            this.Visibility = Visibility.Visible;
-            this.Height = 0;
-            this.Width = 0;
+                change = false;
+                DeleteCancelBTN.Content = "Удалить";
+            }
+            else
+            {
+                List<Classes.BillboardContext> billboardContexts = MainWindow.main.billboard.FindAll(x => x.MovieID == movie.MovieID);
 
-            movie.DeleteMovie();
+                if (billboardContexts.Count > 0)
+                    if (MessageBox.Show($"У этого фильма есть {billboardContexts.Count} афиши.\nАфиши тоже удаляться.\nПродолжить удаление?", $"Удаление фильма {movie.MovieName}", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.No)
+                        return;
+
+                this.Visibility = Visibility.Visible;
+                this.Height = 0;
+                this.Width = 0;
+
+                movie.DeleteMovie();
+            }
         }
 
         private void AddMovie_Click(object sender, RoutedEventArgs e)
