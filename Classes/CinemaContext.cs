@@ -40,7 +40,7 @@ namespace Cinema_Kylosov_Finally.Classes
             return allCinemas;
         }
 
-        public void DeleteCinema()
+        public void Delete()
         {
             MySqlConnection connection = Connection.OpenConnection();
             Connection.Query($"DELETE FROM `Cinema`.`Cinemas` WHERE CinemaID = {this.CinemaID};\nDELETE FROM `Cinema`.`Billboard` WHERE CinemaID = {this.CinemaID};", connection);

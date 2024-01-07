@@ -39,15 +39,35 @@ namespace Cinema_Kylosov_Finally.Classes
             return allMovies;
         }
 
-        public void DeleteMovie()
+        public void Update(string movieName, string genre, int duration)
         {
+            this.MovieName = movieName; 
+            this.Genre = genre;
+            this.Duration = duration;
 
+            MySqlConnection connection = Connection.OpenConnection();
+            Connection.Query($"UPDATE `Cinema`.`Movies` SET " +
+                $"MovieName = '{this.MovieName}', " +
+                $"Genre = '{this.Genre}', " +
+                $"Duration = {this.Duration} " +
+                $"WHERE MovieID = {this.MovieID}", connection);
+            Connection.CloseConnection(connection);
         }
 
-        //udpate insert
-        public void UIMovie(bool Update = false)
+        public void DeleteMovie()
         {
+            //добавить удаление афиш
+            MySqlConnection connection = Connection.OpenConnection();
+            Connection.Query($"DELETE FROM `Cinema`.`Movies` WHERE MovieID = {this.MovieID};\nDELETE FROM `Cinema`.`Billboard` WHERE MovieID = {this.MovieID};" +
+                $"DELETE FROM `Cinema`.`Billbord` where MovieID = {this.MovieID}", connection);
+            Connection.CloseConnection(connection);
+        }
 
+        public static void Insert(int id, string movieName, string genre, int duration)
+        {
+            MySqlConnection connection = Connection.OpenConnection();
+            Connection.Query($"INSERT INTO `Cinema`.`Movies` VALUES({id}, '{movieName}', '{genre}', {duration})", connection);
+            Connection.CloseConnection(connection);
         }
     }
 }

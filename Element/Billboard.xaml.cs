@@ -76,7 +76,8 @@ namespace Cinema_Kylosov_Finally.Element
         {
             if (change)
             {
-                bool NoChanges = Time.Text == TBTime.Text & Tickets.Text == TBTickets.Text & CinemaName.Text == CBCinemaName.SelectedItem.ToString() & MovieName.Text == CBMovieName.SelectedItem.ToString();
+                bool NoChanges = (Time.Text == TBTime.Text & Tickets.Text == TBTickets.Text & CinemaName.Text == CBCinemaName.SelectedItem.ToString() & MovieName.Text == CBMovieName.SelectedItem.ToString()) ||
+                                 (TBTicketPrice.Text == "" || TBTickets.Text == "" || TBTime.Text == "");
                 bool TimeParse = DateTime.TryParse(TBTime.Text, out DateTime time);
 
                 CinemaName.Visibility = Visibility.Visible;

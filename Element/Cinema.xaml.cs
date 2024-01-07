@@ -62,7 +62,8 @@ namespace Cinema_Kylosov_Finally.Element
             if (change)
             {
                 bool cinemaExists = MainWindow.main.cinema.Find(x => x.CinemaName == TBName.Text) != null & Name.Text != TBName.Text;
-                bool noChanges = Name.Text == TBName.Text & Number_of_Halls.Text == TBNumber_of_Halls.Text & Number_of_Seats.Text == TBNumber_of_Seats.Text;
+                bool noChanges = (Name.Text == TBName.Text & Number_of_Halls.Text == TBNumber_of_Halls.Text & Number_of_Seats.Text == TBNumber_of_Seats.Text) || 
+                                 (TBName.Text == "" || TBNumber_of_Halls.Text == "" || TBNumber_of_Seats.Text == "");
 
                 if (cinemaExists || noChanges)
                 {
@@ -109,19 +110,19 @@ namespace Cinema_Kylosov_Finally.Element
             List<Classes.BillboardContext> billboardContexts = MainWindow.main.billboard.FindAll(x => x.CinemaID == cinema.CinemaID);
 
             if (billboardContexts.Count > 0)
-                if (MessageBox.Show($"У этого кинотеатра есть {billboardContexts.Count} афиш.\nПродолжить удаление?", $"Удаление кинотеатра {cinema.CinemaName}", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.No)
+                if (MessageBox.Show($"У этого кинотеатра есть {billboardContexts.Count} афиши.\nАфиши тоже удаляться.\nПродолжить удаление?", $"Удаление кинотеатра {cinema.CinemaName}", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.No)
                     return;
 
             this.Visibility = Visibility.Visible;
             this.Height = 0;
             this.Width = 0;
 
-            cinema.DeleteCinema();
+            cinema.Delete();
         }
 
         private void AddCinema_Click(object sender, RoutedEventArgs e)
         {
-            if (TBName.Text != "" || TBNumber_of_Halls.Text != "" || TBNumber_of_Seats.Text != "")
+            if (TBName.Text != "" && TBNumber_of_Halls.Text != "" && TBNumber_of_Seats.Text != "")
                 if (MainWindow.main.cinema.Find(x => x.CinemaName == TBName.Text) == null)
                 {
                     Classes.CinemaContext.Insert(MainWindow.main.cinema[MainWindow.main.cinema.Count - 1].CinemaID + 1, TBName.Text, int.Parse(TBNumber_of_Halls.Text), int.Parse(TBNumber_of_Seats.Text));

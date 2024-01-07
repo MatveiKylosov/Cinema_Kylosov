@@ -7,15 +7,22 @@
              mc:Ignorable="d" >
         <Grid Background="White" Margin="10,10,10,10">
         <TextBlock Text="Название фильма:" FontWeight="Bold" FontSize="16"  Margin="15,15,10,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
-        <TextBlock x:Name="Name" FontSize="16"  Text="Название" Margin="200,15,20,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
-
+        <TextBlock x:Name="Name" FontSize="16"  Margin="200,15,20,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+        <TextBox x:Name="TBName" FontSize="16"  Margin="200,15,20,0" VerticalAlignment="Top" HorizontalAlignment="Left" Visibility="Hidden"/>
+            
         <TextBlock Text="Жанр:" FontWeight="Bold" FontSize="16"  Margin="15,50,10,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
-        <TextBlock x:Name="Genre" FontSize="16"  Text="Жанр" Margin="200,50,20,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
-
+        <TextBlock x:Name="Genre" FontSize="16"   Margin="200,50,20,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+        <TextBox x:Name="TBGenre" FontSize="16"  Margin="200,50,20,0" VerticalAlignment="Top" HorizontalAlignment="Left" Visibility="Hidden" PreviewTextInput="GenreCheck"/>
+            
         <TextBlock Text="Продолжительность:" FontWeight="Bold" FontSize="16"  Margin="15,90,10,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
-        <TextBlock x:Name="Duration" FontSize="16"  Text="Продолжительность" Margin="200,90,20,20" VerticalAlignment="Top" HorizontalAlignment="Left"/>
-       
-        <Button Content="Изменить" Margin="0,130,140,20" Height="20" VerticalAlignment="Top" HorizontalAlignment="Center" Width="125"  x:Name="Save" Click="Edit_Click"/>
-        <Button Content="Удалить" Margin="150,130,15,20" Height="20" VerticalAlignment="Top" HorizontalAlignment="Center" Width="125" Click="Delete_Click"/>
+        <TextBlock x:Name="Duration" FontSize="16"   Margin="200,90,20,20" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+        <TextBox x:Name="TBDuration" FontSize="16"  Margin="200,90,20,20" VerticalAlignment="Top" HorizontalAlignment="Left" Visibility="Hidden" PreviewTextInput="DigitCheck"/>
+
+        <Button x:Name="EditAddBTN" Content="Изменить" Margin="0,130,140,20" Height="20" VerticalAlignment="Top" HorizontalAlignment="Center" Width="125" Click="EditMovie_Click"/>
+        <Button x:Name="DeleteCancelBTN" Content="Удалить" Margin="150,130,15,20" Height="20" VerticalAlignment="Top" HorizontalAlignment="Center" Width="125" Click="DeleteMovie_Click"/>
+
+        <Grid Background="White" x:Name="AddGrid" MouseLeftButtonDown="Add_Click" Visibility="Hidden">
+            <TextBlock Text="Добавить" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+        </Grid>
     </Grid>
 </UserControl>

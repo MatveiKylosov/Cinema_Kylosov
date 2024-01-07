@@ -63,6 +63,8 @@ namespace Cinema_Kylosov_Finally
         public void Movie_Click(object sender, RoutedEventArgs e)
         {
             parent.Children.Clear();
+
+            parent.Children.Add(new Element.Movie(null));
             UpdateInfo();
             foreach (var x in movies)
                 parent.Children.Add(new Element.Movie(x));
