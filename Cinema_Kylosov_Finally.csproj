@@ -182,7 +182,9 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Data\" />
+  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="WorkingBD\WorkingBD.csproj">
       <Project>{6fe15693-8d03-4613-977f-734818064510}</Project>

@@ -1,0 +1,25 @@
+CREATE TABLE `Billboard` (
+  `BillboardID` int(11) NOT NULL AUTO_INCREMENT,
+  `CinemaID` int(11) DEFAULT NULL,
+  `MovieID` int(11) DEFAULT NULL,
+  `ShowTime` datetime DEFAULT NULL,
+  `TicketPrice` decimal(5,2) DEFAULT NULL,
+  `NumberOfTickets` int(11) DEFAULT NULL,
+  PRIMARY KEY (`BillboardID`)
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci
+
+CREATE TABLE `Cinemas` (
+  `CinemaID` int(11) NOT NULL AUTO_INCREMENT,
+  `CinemaName` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `NumberOfHalls` int(11) DEFAULT NULL,
+  `NumberOfSeats` int(11) DEFAULT NULL,
+  PRIMARY KEY (`CinemaID`)
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci
+
+CREATE TABLE `Movies` (
+  `MovieID` int(11) NOT NULL AUTO_INCREMENT,
+  `MovieName` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `Genre` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `Duration` int(11) DEFAULT NULL,
+  PRIMARY KEY (`MovieID`)
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci
